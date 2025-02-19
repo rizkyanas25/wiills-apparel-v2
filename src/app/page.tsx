@@ -1,101 +1,74 @@
-import Image from "next/image";
+import Image from "next/image"
+import Link from "next/link"
+import { Shirt, Facebook, Instagram, Mail } from "lucide-react"
+import { ProductCarousel } from "@/components/product-carousel"
 
-export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+import { ShopeeIcon, TiktokIcon, WhatsAppIcon } from '@/components/icons'
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+export default function Page() {
+
+  const renderLinks = (links: { label: string, icon: React.ReactNode, href: string, noBlank?: boolean }[]) => (
+    <div className="w-full max-w-md space-y-3">
+      {links.map(({ label, icon, href, noBlank }) => (
+        <Link
+          key={label}
+          href={href}
+          target={noBlank ? '_parent': "_blank"}
+          className="flex items-center justify-between text-[#E64129] bg-white/30 backdrop-blur-lg shadow-lg border border-white/20 rounded-full px-4 py-3 hover:opacity-90 transition-all hover:scale-[1.05] duration-300"
         >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <span className="text-white font-bold">{label}</span>
+          {icon}
+        </Link>
+      ))}
     </div>
   );
+
+  const renderSocialMediaIcons = (socmeds: {icon: React.ReactNode, href: string}[]) => (
+    <div className="flex justify-center space-x-6 text-white font-bold">
+      {socmeds.map(({ icon, href }) => (
+          <Link key={href} href={href} target="_blank" className="border border-transparent rounded-full p-2 bg-transparent hover:bg-white hover:bg-white/20 hover:backdrop-blur-lg hover:text-[#E64129] transition-all duration-300 hover:opacity-90 hover:scale-110">
+            {icon}
+          </Link>
+      ))}
+    </div>
+  );
+
+  return (
+    <main className="min-h-screen bg-[url('/assets/images/bg.webp')] bg-cover bg-center bg-no-repeat flex flex-col items-center">
+      <div className="absolute w-[100vw] h-[100vh] flex flex-col items-center overflow-x-hidden overflow-y-scroll px-8 py-8 space-y-8">
+        <div className="text-center space-y-2">
+          <Image
+            src="/assets/images/wills-logo-white.webp"
+            alt="Wills Logo"
+            width={100}
+            height={100}
+            className="mx-auto"
+          />
+          <h1 className="text-3xl lg:text-5xl font-bold text-white">WILLS APPAREL</h1>
+          <p className="text-white italic text-xl lg:text-3xl"><span className="text-[#FFFFFF] font-bold">#</span>CustomJerseyAntiRibet</p>
+        </div>
+
+        {/* Navigation Links */}
+        {renderLinks([
+          { label: "SPESIFIKASI CUSTOM JERSEY", icon: <Shirt />, href: "/spesifikasi", noBlank: true },
+          { label: "OFFICIAL TIKTOK SHOP", icon: <TiktokIcon className="text-[#E64129] h-[24px] w-[24px]"/>, href: "https://www.tiktok.com/@willsapparel.id?_t=ZS-8txkXUof16t&_r=1" },
+          { label: "OFFICIAL SHOPEE", icon: <ShopeeIcon className="text-[#E64129] h-[24px] w-[24px]"/>, href: "https://shopee.co.id/willsapparel?categoryId=100637&entryPoint=ShopByPDP&itemId=26567468431" },
+          { label: "ADMIN DESAIN DAN PEMESANAN", icon: <WhatsAppIcon className="text-[#E64129] h-[24px] w-[24px]"/>, href: "https://api.whatsapp.com/send?phone=6285888077334&text=Halo%20Wills%2C%20Info%20Pricelist%20Masing-Masing%C2%A0Type." },
+          { label: "ADMIN PRODUKSI DAN KOMPLAIN", icon: <WhatsAppIcon className="text-[#E64129] h-[24px] w-[24px]"/>, href: "https://api.whatsapp.com/send?phone=6285607125828" },
+        ])}
+
+        {/* Social Media Icons */}
+        {
+          renderSocialMediaIcons([
+            { icon: <Facebook />, href: "https://www.facebook.com/profile.php?id=100076669931596" },
+            { icon: <Instagram />, href: "https://www.instagram.com/willsapparel.id/" },
+            { icon: <Mail />, href: "mailto:willsapparel.id@gmail.com" },
+          ])
+        }
+
+        {/* Product Carousel */}
+        <ProductCarousel />
+      </div>
+    </main>
+  )
 }
