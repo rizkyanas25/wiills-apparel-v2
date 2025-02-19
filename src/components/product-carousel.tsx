@@ -18,14 +18,14 @@ export function ProductCarousel() {
 
   return (
     <div className="w-[calc(100vw-4rem)] md:max-w-2xl mx-auto mt-12">
-      <div className="flex flex-col gap-10 justify-center items-center rounded-xl bg-white/30 backdrop-blur-lg shadow-lg border border-white/20 p-6 md:p-8">
+      <div className="flex flex-col gap-2 justify-center items-center rounded-xl bg-white/30 backdrop-blur-lg shadow-lg border border-white/20 p-6 md:p-8">
         <Swiper
           className="w-[calc(100vw-8rem)] md:w-[600px] h-[220px] md:h-[248px]"
           modules={[Autoplay]}
           spaceBetween={20}
           slidesPerView={2} // Show 2 slides on mobile
           breakpoints={{
-            1024: { slidesPerView: 4 }, // Show 3 slides on desktop
+            550: {slidesPerView: 3}, // Show 3 slides on desktop
           }}
           autoplay={{ delay: 3000, disableOnInteraction: false }}
           loop={true}
@@ -37,7 +37,7 @@ export function ProductCarousel() {
             <SwiperSlide key={product.id}>
               <Link href={product.url} target="_blank" rel="noopener noreferrer">
                 <div className="flex flex-col items-center">
-                  <div className="relative w-24 h-32 md:w-32 md:h-40 mb-2">
+                  <div className="relative w-24 h-32 md:w-32 md:h-40">
                     <Image
                       src={product.image || "/placeholder.svg"}
                       alt={product.name}
