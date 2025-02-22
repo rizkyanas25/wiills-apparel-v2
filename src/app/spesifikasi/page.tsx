@@ -25,6 +25,7 @@ export default function Page() {
     JerseyVoli: [
       '/assets/images/catalogue/Katalog wills-11.jpg',
       '/assets/images/catalogue/Katalog wills-12.jpg',
+      '/assets/images/catalogue/Katalog wills-13.jpg',
     ],
     Additional: [
       '/assets/images/catalogue/Katalog wills-14.jpg',
