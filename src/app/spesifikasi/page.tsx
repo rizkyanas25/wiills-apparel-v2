@@ -25,9 +25,9 @@ export default function Page() {
     JerseyVoli: [
       '/assets/images/catalogue/Katalog wills-11.jpg',
       '/assets/images/catalogue/Katalog wills-12.jpg',
-      '/assets/images/catalogue/Katalog wills-13.jpg',
     ],
     Additional: [
+      '/assets/images/catalogue/Katalog wills-13.jpg',
       '/assets/images/catalogue/Katalog wills-14.jpg',
       '/assets/images/catalogue/Katalog wills-15.jpg',
       '/assets/images/catalogue/Katalog wills-16.jpg',
@@ -132,14 +132,14 @@ export default function Page() {
         <Link
           href={"https://api.whatsapp.com/send?phone=6285888077334&text=Halo%20Wills%2C%20Info%20Pricelist%20Masing-Masing%C2%A0Type."}
           target={"_blank"}
-          className="flex w-full m-o mt-[16px] items-center gap-[10px] justify-between text-[#E64129] bg-white/30 backdrop-blur-lg shadow-lg border border-white/20 rounded-full px-4 py-3 hover:opacity-90 transition-all hover:scale-[1.05] duration-300"
+          className="flex w-full max-w-[540px] m-o mt-[16px] items-center gap-[10px] justify-between text-[#E64129] bg-white/30 backdrop-blur-lg shadow-lg border border-white/20 rounded-full px-4 py-3 hover:opacity-90 transition-all hover:scale-[1.05] duration-300"
         >
           <span className="text-white font-bold">ADMIN DESAIN DAN PEMESANAN</span>
           <WhatsAppIcon className="text-[#E64129] h-[24px] w-[24px]"/>
         </Link>
         <Link
           href={"/"}
-          className="w-full m-o mt-[16px] flex justify-center text-[#E64129] bg-white/30 backdrop-blur-lg shadow-lg border border-white/20 rounded-full px-6 py-3 hover:opacity-90 transition-all hover:scale-[1.05] duration-300"
+          className="w-full max-w-[540px] m-o mt-[16px] flex justify-center text-[#E64129] bg-white/30 backdrop-blur-lg shadow-lg border border-white/20 rounded-full px-6 py-3 hover:opacity-90 transition-all hover:scale-[1.05] duration-300"
         >
           <span className="text-white font-bold">Kembali</span>
         </Link>
