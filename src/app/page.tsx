@@ -55,6 +55,11 @@ export default function Page() {
           { label: "OFFICIAL SHOPEE", icon: <ShopeeIcon className="text-[#E64129] h-[24px] w-[24px]"/>, href: "https://shopee.co.id/willsapparel?categoryId=100637&entryPoint=ShopByPDP&itemId=26567468431" },
           { label: "ADMIN DESAIN DAN PEMESANAN", icon: <WhatsAppIcon className="text-[#E64129] h-[24px] w-[24px]"/>, href: "https://api.whatsapp.com/send?phone=6285888077334&text=Halo%20Wills%2C%20Info%20Pricelist%20Masing-Masing%C2%A0Type." },
           { label: "ADMIN PRODUKSI DAN KOMPLAIN", icon: <WhatsAppIcon className="text-[#E64129] h-[24px] w-[24px]"/>, href: "https://api.whatsapp.com/send?phone=6285607125828" },
+          {
+            label: "ADMIN SEWA JERSEY",
+            icon: <WhatsAppIcon className="text-[#E64129] h-[24px] w-[24px]" />,
+            href: `https://api.whatsapp.com/send?phone=6285777996670&text=${encodeURIComponent("Haloo Admin Sewa Jersey, Apakah stok ready untuk Tanggal : …… ( Isi dengan Tgl Sewa )")}`
+          }
         ])}
 
         {/* Social Media Icons */}
