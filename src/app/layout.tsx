@@ -97,7 +97,7 @@ export default function RootLayout({
     name: 'Wills Apparel',
     image: 'https://willsapparel.id/assets/images/wills-logo-white.webp',
     url: 'https://willsapparel.id',
-    telephone: '+628123456789', // Placeholder, adjust if needed
+    telephone: '+6285607125828',
     address: {
       '@type': 'PostalAddress',
       addressLocality: 'Malang',
