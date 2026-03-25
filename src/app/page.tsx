@@ -1,8 +1,13 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { Shirt, Facebook, Instagram, Mail } from 'lucide-react';
-
-import { TiktokIcon, WhatsAppIcon } from '@/components/icons';
+import {
+  // FaShirt as Shirt,
+  FaFacebook as Facebook,
+  FaInstagram as Instagram,
+  FaEnvelope as Mail,
+  FaTiktok,
+  FaWhatsapp,
+} from 'react-icons/fa6';
 
 export default function Page() {
   return (
@@ -28,17 +33,17 @@ export default function Page() {
 
           {/* Navigation Links */}
           {renderLinks([
-            {
-              label: 'SPESIFIKASI CUSTOM JERSEY',
-              icon: <Shirt />,
-              href: '/spesifikasi',
-              noBlank: true,
-            },
-            {
-              label: 'OFFICIAL TIKTOK SHOP',
-              icon: <TiktokIcon className='text-[#E64129] h-[24px] w-[24px]' />,
-              href: 'https://www.tiktok.com/@willsapparel.id?_t=ZS-8txkXUof16t&_r=1',
-            },
+            // {
+            //   label: 'SPESIFIKASI CUSTOM JERSEY',
+            //   icon: <Shirt />,
+            //   href: '/spesifikasi',
+            //   noBlank: true,
+            // },
+            // {
+            //   label: 'OFFICIAL TIKTOK SHOP',
+            //   icon: <FaTiktok className='text-[#E64129] h-[24px] w-[24px]' />,
+            //   href: 'https://www.tiktok.com/@willsapparel.id?_t=ZS-8txkXUof16t&_r=1',
+            // },
             // Commented out as client want to change the design
             // {
             //   label: 'OFFICIAL SHOPEE',
@@ -46,33 +51,25 @@ export default function Page() {
             //   href: 'https://shopee.co.id/willsapparel?categoryId=100637&entryPoint=ShopByPDP&itemId=26567468431',
             // },
             {
+              label: 'ADMIN KHUSUS CUSTOM SATUAN',
+              icon: <FaWhatsapp className='text-[#E64129] h-[24px] w-[24px]' />,
+              href: 'https://api.whatsapp.com/send?phone=6285607125828',
+            },
+            {
               label: 'ADMIN DESAIN DAN PEMESANAN 1',
               subtitle: 'FAST RESPONSE SORE-MALAM',
-              icon: (
-                <WhatsAppIcon className='text-[#E64129] h-[24px] w-[24px]' />
-              ),
+              icon: <FaWhatsapp className='text-[#E64129] h-[24px] w-[24px]' />,
               href: 'https://api.whatsapp.com/send?phone=6285888077334&text=Halo%20Wills%2C%20Info%20Pricelist%20Masing-Masing%C2%A0Type.',
             },
             {
               label: 'ADMIN DESAIN DAN PEMESANAN 2',
               subtitle: 'FAST RESPONSE PAGI-SIANG',
-              icon: (
-                <WhatsAppIcon className='text-[#E64129] h-[24px] w-[24px]' />
-              ),
+              icon: <FaWhatsapp className='text-[#E64129] h-[24px] w-[24px]' />,
               href: 'https://api.whatsapp.com/send?phone=6285887770338&text=Halo%20Wills%2C%20Info%20Pricelist%20Masing-Masing%C2%A0Type.',
             },
             {
-              label: 'ADMIN PRODUKSI DAN KOMPLAIN',
-              icon: (
-                <WhatsAppIcon className='text-[#E64129] h-[24px] w-[24px]' />
-              ),
-              href: 'https://api.whatsapp.com/send?phone=6285607125828',
-            },
-            {
               label: 'ADMIN SEWA JERSEY',
-              icon: (
-                <WhatsAppIcon className='text-[#E64129] h-[24px] w-[24px]' />
-              ),
+              icon: <FaWhatsapp className='text-[#E64129] h-[24px] w-[24px]' />,
               href: `https://api.whatsapp.com/send?phone=6285777996670&text=${encodeURIComponent(
                 'Haloo Admin Sewa Jersey, Apakah stok ready untuk Tanggal : …… ( Isi dengan Tgl Sewa )',
               )}`,
@@ -83,6 +80,10 @@ export default function Page() {
         {/* Social Media Icons */}
         <div className='pb-24'>
           {renderSocialMediaIcons([
+            {
+              icon: <FaTiktok />,
+              href: 'https://www.tiktok.com/@willsapparel.id',
+            },
             {
               icon: <Facebook />,
               href: 'https://www.facebook.com/profile.php?id=100076669931596',
@@ -118,18 +119,24 @@ const renderLinks = (
         key={label}
         href={href}
         target={noBlank ? '_parent' : '_blank'}
-        className='flex items-center justify-between text-[#E64129] bg-white/30 backdrop-blur-lg shadow-lg border border-white/20 rounded-full px-4 py-3 hover:opacity-90 transition-all hover:scale-[1.05] duration-300'
+        className='flex items-center justify-between gap-3 text-[#E64129] bg-white/30 backdrop-blur-lg shadow-lg border border-white/20 rounded-full px-4 py-3 hover:opacity-90 transition-all hover:scale-[1.05] duration-300'
       >
         {subtitle ? (
-          <div>
-            <p className='text-white font-bold'>{label}</p>
-            <p className=' text-white italic text-xs'>{subtitle}</p>
+          <div className='text-left'>
+            <p className='text-white font-bold text-sm sm:text-base leading-tight'>
+              {label}
+            </p>
+            <p className='text-white italic text-[10px] sm:text-xs mt-0.5'>
+              {subtitle}
+            </p>
           </div>
         ) : (
-          <span className='text-white font-bold'>{label}</span>
+          <span className='text-white font-bold text-sm sm:text-base text-left'>
+            {label}
+          </span>
         )}
 
-        {icon}
+        <div className='flex-shrink-0'>{icon}</div>
       </Link>
     ))}
   </div>
