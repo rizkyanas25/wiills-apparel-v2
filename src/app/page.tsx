@@ -53,7 +53,7 @@ export default function Page() {
             {
               label: 'ADMIN KHUSUS CUSTOM SATUAN',
               icon: <FaWhatsapp className='text-[#E64129] h-[24px] w-[24px]' />,
-              href: 'https://api.whatsapp.com/send?phone=6285607125828',
+              href: 'https://api.whatsapp.com/send?phone=6285607125828&text=Haloo%20Wills,%20Info%20pricelist%20dan%20syarat%20untuk%20custom%20satuan%20dong.',
             },
             {
               label: 'ADMIN DESAIN DAN PEMESANAN 1',
