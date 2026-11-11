@@ -1,5 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import { buildWhatsAppUrl } from '@/constants/admin-links';
+import { getAdminLinks } from '@/lib/admin-links';
 import {
   // FaShirt as Shirt,
   FaFacebook as Facebook,
@@ -9,7 +11,9 @@ import {
   FaWhatsapp,
 } from 'react-icons/fa6';
 
-export default function Page() {
+export default async function Page() {
+  const adminLinks = await getAdminLinks();
+
   return (
     <main className="min-h-screen bg-[url('/assets/images/bg.webp')] bg-cover bg-center bg-no-repeat flex flex-col items-center">
       <div className='absolute w-[100vw] h-[100vh] flex flex-col items-center overflow-x-hidden overflow-y-scroll px-8 py-8 space-y-8'>
@@ -50,30 +54,13 @@ export default function Page() {
             //   icon: <ShopeeIcon className='text-[#E64129] h-[24px] w-[24px]' />,
             //   href: 'https://shopee.co.id/willsapparel?categoryId=100637&entryPoint=ShopByPDP&itemId=26567468431',
             // },
-            {
-              label: 'ADMIN KHUSUS CUSTOM SATUAN',
+            // WhatsApp admin links: editable from the Google Sheet (see README)
+            ...adminLinks.map((link) => ({
+              label: link.label,
+              subtitle: link.subtitle,
               icon: <FaWhatsapp className='text-[#E64129] h-[24px] w-[24px]' />,
-              href: 'https://api.whatsapp.com/send?phone=6285607125828&text=Haloo%20Wills,%20Info%20pricelist%20dan%20syarat%20untuk%20custom%20satuan%20dong.',
-            },
-            {
-              label: 'ADMIN DESAIN DAN PEMESANAN 1',
-              subtitle: 'FAST RESPONSE SORE-MALAM',
-              icon: <FaWhatsapp className='text-[#E64129] h-[24px] w-[24px]' />,
-              href: 'https://api.whatsapp.com/send?phone=6285888077334&text=Halo%20Wills%2C%20Info%20Pricelist%20Masing-Masing%C2%A0Type.',
-            },
-            {
-              label: 'ADMIN DESAIN DAN PEMESANAN 2',
-              subtitle: 'FAST RESPONSE PAGI-SIANG',
-              icon: <FaWhatsapp className='text-[#E64129] h-[24px] w-[24px]' />,
-              href: 'https://api.whatsapp.com/send?phone=6285887770338&text=Halo%20Wills%2C%20Info%20Pricelist%20Masing-Masing%C2%A0Type.',
-            },
-            {
-              label: 'ADMIN SEWA JERSEY',
-              icon: <FaWhatsapp className='text-[#E64129] h-[24px] w-[24px]' />,
-              href: `https://api.whatsapp.com/send?phone=6285777996670&text=${encodeURIComponent(
-                'Haloo Admin Sewa Jersey, Apakah stok ready untuk Tanggal : …… ( Isi dengan Tgl Sewa )',
-              )}`,
-            },
+              href: buildWhatsAppUrl(link),
+            })),
           ])}
         </div>
 
@@ -116,7 +103,7 @@ const renderLinks = (
   <div className='w-full max-w-md space-y-3'>
     {links.map(({ label, icon, href, subtitle, noBlank }) => (
       <Link
-        key={label}
+        key={href + label}
         href={href}
         target={noBlank ? '_parent' : '_blank'}
         className='flex items-center justify-between gap-3 text-[#E64129] bg-white/30 backdrop-blur-lg shadow-lg border border-white/20 rounded-full px-4 py-3 hover:opacity-90 transition-all hover:scale-[1.05] duration-300'
